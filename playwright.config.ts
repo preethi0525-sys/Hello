@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const isCI = Boolean(process.env.CI);
+const baseURL = process.env.BASE_URL ?? 'http://127.0.0.1:3000';
 
 export default defineConfig({
   testDir: './tests',
@@ -12,12 +13,22 @@ export default defineConfig({
   timeout: 30_000,
   expect: { timeout: 7_000 },
   use: {
-    baseURL: process.env.BASE_URL ?? 'http://127.0.0.1:3000',
+    baseURL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     actionTimeout: 10_000,
   },
+  ...(baseURL === 'http://127.0.0.1:3000'
+    ? {
+        webServer: {
+          command: 'npm run start',
+          url: 'http://127.0.0.1:3000',
+          reuseExistingServer: !isCI,
+          timeout: 30_000,
+        },
+      }
+    : {}),
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     { name: 'firefox', use: { ...devices['Desktop Firefox'] } },

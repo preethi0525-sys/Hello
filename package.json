@@ -2,15 +2,16 @@
   "name": "ecommerce-website-testing-suite",
   "version": "1.0.0",
   "private": true,
-  "description": "Cross-browser end-to-end, accessibility, and user-flow tests for e-commerce websites.",
+  "description": "A runnable sample e-commerce storefront with Playwright end-to-end tests.",
   "scripts": {
+    "start": "node server.js",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:smoke": "playwright test --grep @smoke",
     "test:accessibility": "playwright test tests/accessibility.spec.ts",
     "report": "playwright show-report",
-    "install:browsers": "playwright install --with-deps"
+    "install:browsers": "playwright install"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",

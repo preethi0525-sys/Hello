@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A small demo shop for practicing e-commerce testing." />
+    <title>Northstar Demo Shop</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="logo" data-testid="site-logo" href="/" aria-label="Northstar Demo Shop home">Northstar</a>
+      <form class="search-form" action="/search" method="get" role="search">
+        <label class="sr-only" for="site-search">Search products</label>
+        <input id="site-search" data-testid="site-search" name="q" type="search" placeholder="Search products" />
+        <button type="submit">Search</button>
+      </form>
+      <nav data-testid="main-navigation" aria-label="Main navigation">
+        <a href="/collections/all">Shop</a>
+        <a href="/account/login">Account</a>
+        <a href="/cart">Cart <span data-testid="cart-count">0</span></a>
+      </nav>
+    </header>
+    <main id="main-content" class="container"></main>
+    <footer><p>Northstar Demo Shop · Sample storefront for testing practice</p></footer>
+  </body>
+</html>
